@@ -15,6 +15,7 @@ The manager acts as a wrapper around the traditional way of creating a server. L
 10. Copy the public server ip address and port and send it to your friends!
 ### Potentially upcoming features.
 - One-click **SourceMod** installation.
+- **SourceMod** permissions configurator, like adding admins/admin groups.
 - A configurator for **server.cfg**.
 - Automatic updating (this one is a bit tricky).
 - Automatically start the server again if it crashes.
