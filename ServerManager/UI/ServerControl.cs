@@ -115,7 +115,8 @@ namespace ServerManager.UI
                     catch (Exception exception) when (exception is NatDeviceNotFoundException || exception is MappingException)
                     {
                         this.ShowError("Unable to create port mapping, either your router/NAT has port mapping disabled or it is not supported. " +
-                            "To fix this issue you might need to make a port forward in your router configuration (find a tutorial on Google). " +
+                            "To fix this issue you might need to make a port forward in your router configuration (find a tutorial for your router online). " +
+                            "People outside of your local network will be unable to join your server without a port mapping/forward. " +
                             "You can disable automatic port mapping in Help > Settings > Network.", "Port Mapping Failed");
                     }
                 }
