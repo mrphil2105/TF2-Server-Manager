@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TF2 Server Manager")]
-[assembly: AssemblyDescription("A simple tool that creates and manages your Team Fortress 2 servers. Simply add a server, configure general settings, run the updater and start playing!\r\nNOTE: This is a beta version, and not the final release.")]
+[assembly: AssemblyDescription("A simple tool that creates and manages your Team Fortress 2 servers. Simply add a server, configure general settings, run the updater and start playing!\r\nNOTE: This is an alpha version, and not the final release.")]
 [assembly: AssemblyCompany("https://www.youtube.com/crazydotdot")]
 [assembly: AssemblyProduct("TF2 Server Manager")]
 [assembly: AssemblyCopyright("Copyright © Crazy.. 2018")]
