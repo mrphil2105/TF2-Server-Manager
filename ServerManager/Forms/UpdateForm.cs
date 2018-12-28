@@ -72,6 +72,11 @@ namespace ServerManager.Forms
 
             while ((line = await _steamCMDProcess.StandardOutput.ReadLineAsync()) != null)
             {
+                if (IsDisposed)
+                {
+                    break;
+                }
+
                 WriteMessage(line);
                 _steamCMDParser.ParseLine(line);
                 lblStatus.Text = "Status : " + _steamCMDParser.UpdateState;
