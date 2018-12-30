@@ -1,9 +1,12 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
+using Open.Nat;
 using ServerManager.Core;
 
 namespace ServerManager.Helpers
@@ -52,6 +55,35 @@ namespace ServerManager.Helpers
             }
 
             return null;
+        }
+
+        public static async Task<bool> TryCreatePortMappingAsync(Server server)
+        {
+            if (server == null)
+            {
+                throw new ArgumentNullException(nameof(server));
+            }
+
+            var discoverer = new NatDiscoverer();
+
+            try
+            {
+                var device = await discoverer.DiscoverDeviceAsync();
+                var mappings = await device.GetAllMappingsAsync();
+
+                if (!mappings.Any(m => m.Protocol == Protocol.Udp && m.PrivatePort == server.Port && m.PublicPort == server.Port))
+                {
+                    var mapping = new Mapping(Protocol.Udp, server.Port, server.Port, server.Name);
+                    await device.CreatePortMapAsync(mapping);
+                }
+
+                return true;
+            }
+            catch
+            {
+            }
+
+            return false;
         }
     }
 }
