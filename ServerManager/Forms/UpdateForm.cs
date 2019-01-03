@@ -96,11 +96,13 @@ namespace ServerManager.Forms
 
             foreach (var process in processes)
             {
-                // Make sure we are killing the SteamCMD of this updater only.
-                if (process.MainModule.FileName == _server.SteamCMDPath)
+                using (process)
                 {
-                    process.Kill();
-                    process.Dispose();
+                    // Make sure we are killing the SteamCMD of this updater only.
+                    if (process.MainModule.FileName.EndsWith(_server.SteamCMDPath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        process.Kill();
+                    }
                 }
             }
         }
